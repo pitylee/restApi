@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "4aedf1c2-a30c-41d8-8dcc-b6436d437282",
+		"name": "restApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find all employee by position",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "MAC w50+UMiEu0SE8ssBohi3uj6Cbyw=",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"eventId\": \"cdeae677-d225-492b-9b25-931028121846\",\n  \"eventTime\": \"2021-07-31T00:00:00.000000Z\",\n  \"eventType\": \"employees.find\",\n  \"metadata\": {\n    \"api_key\": \"asd\"\n  },\n  \"payload\": {\n      \"position\": \"developer\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find child employee by ID",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "MAC ROUpNnlE6yJx38JDq1jLxWUFZ34=",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"eventId\": \"cdeae677-d225-492b-9b25-931028121846\",\n  \"eventTime\": \"2021-07-31T00:00:00.000000Z\",\n  \"eventType\": \"employees.find.child.employees\",\n  \"metadata\": {\n    \"api_key\": \"asd\"\n  },\n  \"payload\": {\n      \"parent_id\": 6\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "MAC vmMl9xE2VO3ETU3HcPZrSPJoMNU=",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"eventId\": \"cdeae677-d225-492b-9b25-931028121846\",\n  \"eventTime\": \"2021-07-31T00:00:00.000000Z\",\n  \"eventType\": \"employees.save\",\n  \"metadata\": {\n    \"api_key\": \"asd\"\n  },\n  \"payload\": {\n      \"name\": \"Test Test\",\n      \"position\": \"developer\",\n      \"superior\": \"Delightful Dog\",\n      \"startDate\": \"2021-09-01\",\n      \"endDate\": null\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "MAC 8duHSsV8v9BhJt4wabsx0mXVPWE=",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"eventId\": \"cdeae677-d225-492b-9b25-931028121846\",\n  \"eventTime\": \"2021-07-31T00:00:00.000000Z\",\n  \"eventType\": \"employees.update\",\n  \"metadata\": {\n    \"api_key\": \"asd\"\n  },\n  \"payload\": {\n      \"employee_id\": 1,\n      \"name\": \"Test Up Test\",\n      \"position\": \"management\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "MAC yXniaNGovN5HpP6bTgNrJganWTQ=",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"eventId\": \"cdeae677-d225-492b-9b25-931028121846\",\n  \"eventTime\": \"2021-07-31T00:00:00.000000Z\",\n  \"eventType\": \"employees.delete\",\n  \"metadata\": {\n    \"api_key\": \"asd\"\n  },\n  \"payload\": {\n      \"employee_id\": 1,\n      \"employee_name\": \"Test Up Test\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

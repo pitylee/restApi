@@ -18,7 +18,7 @@ class EmployeesUpdateEventAction extends BaseAction
         return [
             'request' => ['required', 'array'],
             'request.metadata.api_key' => ['required', 'exists:api_keys,api_key'],
-            'request.payload.employee_id' => ['required', 'integer', 'exists:employees,id'],
+            'request.payload.employee_id' => ['required', 'numeric'],
             'request.payload.name' => ['string'],
             'request.payload.position' => ['string'],
             'request.payload.superior' => ['exists:employees,name'],
@@ -34,7 +34,7 @@ class EmployeesUpdateEventAction extends BaseAction
     {
         $employee = Employees::find($this->request['payload']['employee_id']);
 
-        if (!$employee->count()) {
+        if (!$employee) {
             throw new RestApiException('Employee with id "' . $this->request['payload']['employee_id'] . '" not found!');
         }
 

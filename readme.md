@@ -116,6 +116,12 @@ php artisan db:seed SeedEmployeePositionsTable
 php artisan db:seed SeedEmployeesTable
 ```
 
+## _Handy_
+
+It can come in handy, that we have logs about the incoming requests + the generated MAC can be seen there as well.
+GUI for this:
+[http://localhost/log-viewer/](http://localhost/log-viewer/)
+
 ## _Troubleshoot_
 
 * If you have a 500 error, in the laradock/ folder:
