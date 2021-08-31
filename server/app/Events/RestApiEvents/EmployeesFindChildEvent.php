@@ -13,6 +13,6 @@ class EmployeesFindChildEvent implements RestApiEvent
      */
     public function handle(array $request)
     {
-        EmployeesFindChildEventAction::run(['request' => $request]);
+        return EmployeesFindChildEventAction::run(['request' => $request]);
     }
 }

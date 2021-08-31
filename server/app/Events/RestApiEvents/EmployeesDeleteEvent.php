@@ -13,6 +13,6 @@ class EmployeesDeleteEvent implements RestApiEvent
      */
     public function handle(array $request)
     {
-        EmployeesDeleteEventAction::run(['request' => $request]);
+        return EmployeesDeleteEventAction::run(['request' => $request]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Actions\RestApiEvents;
 
 use App\Actions\BaseAction;
+use App\Exceptions\RestApiException;
+use App\Models\Employees;
 
 class EmployeesFindEventAction extends BaseAction
 {
@@ -22,7 +24,14 @@ class EmployeesFindEventAction extends BaseAction
      */
     public function handle()
     {
-        dd('Find: ', $this->request['payload']);
-        return;
+        $position = $this->request['payload']['position'] ?? null;
+
+        if (!$position) {
+            throw new RestApiException('Position is needed in the payload!');
+        }
+
+        $employees = Employees::wherePosition($position);
+
+        return $employees ? $employees->get()->toArray() : [];
     }
 }

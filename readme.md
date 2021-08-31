@@ -102,6 +102,12 @@ The migration:
 php artisan migrate
 ```
 
+The seeds:
+```
+php artisan db:seed SeedApiKeysTable
+php artisan db:seed SeedEmployeePositionsTable
+php artisan db:seed SeedEmployeesTable
+```
 
 ## _Troubleshoot_
 

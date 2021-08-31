@@ -13,6 +13,6 @@ class EmployeesSaveEvent implements RestApiEvent
      */
     public function handle(array $request)
     {
-        EmployeesSaveEventAction::run(['request' => $request]);
+        return EmployeesSaveEventAction::run(['request' => $request]);
     }
 }

@@ -13,6 +13,6 @@ class EmployeesUpdateEvent implements RestApiEvent
      */
     public function handle(array $request)
     {
-        EmployeesUpdateEventAction::run(['request' => $request]);
+        return EmployeesUpdateEventAction::run(['request' => $request]);
     }
 }
