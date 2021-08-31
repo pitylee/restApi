@@ -20,8 +20,9 @@ git submodule update --init --recursive
 
 # Dependencies
 
-While a stable internet connection is needed, you may have to install **Docker (Desktop)** and **Docker Compose** if you don't have already installed.
-If you still have to install, please follow the official docs to do so [here](https://docs.docker.com/desktop/#download-and-install) and [here](https://docs.docker.com/compose/install/).
+While a stable internet connection is needed, you may have to install **Docker (Desktop)** and **Docker Compose** if you
+don't have already installed. If you still have to install, please follow the official docs to do
+so [here](https://docs.docker.com/desktop/#download-and-install) and [here](https://docs.docker.com/compose/install/).
 
 # Before we begin
 
@@ -36,26 +37,29 @@ chmod +x ./start
 ## Copy conf and env files
 
 You have to move the nginx default.conf file from the root, to the laradock submodule's nginx sites directory:
+
 ```
 mv default.conf ./laradock/nginx/sites/default.conf
 ```
 
 You have to move the corresponding .env file from the root, to the laradock submodule's directory:
+
 ```
 mv .env.laradock ./laradock/.env
 ```
 
 You have to move the corresponding .env file from the root, to the server directory for Laravel:
+
 ```
 mv .env.laravel ./server/.env
 ```
-
 
 # Usage
 
 ## If you have already ran ./start or the docker-compose commands
 
-At this point, if you have already ran Laradock, you have to restart your Docker Desktop, and re-build the images, more specifically the nginx one, in order to force load the nginx configuration.
+At this point, if you have already ran Laradock, you have to restart your Docker Desktop, and re-build the images, more
+specifically the nginx one, in order to force load the nginx configuration.
 
 ## Start docker environment
 
@@ -65,7 +69,8 @@ For short usage on Mac and Linux, you can run via the file which contains the co
 ./start 
 ```
 
-This will run the `docker-compose` commands, or you can rule them manually, via running in the terminal of your preference:
+This will run the `docker-compose` commands, or you can rule them manually, via running in the terminal of your
+preference:
 
 ```
 cd ./laradock
@@ -77,8 +82,8 @@ docker-compose exec --user=laradock workspace bash
 
 # In the Laradock environment
 
-When you see the that the Docker containers are up and running, and entered the workspace with one of the two solutions from above, you want to do a few small things:
-
+When you see the that the Docker containers are up and running, and entered the workspace with one of the two solutions
+from above, you want to do a few small things:
 
 ## Install composer packages for Laravel
 
@@ -98,11 +103,13 @@ By default, the username and password for Laradock Mysql will be root:root.
 _This is included in the .env, but you may want to double check with DBeaver, your Database editor of your <3's choice._
 
 The migration:
+
 ```
 php artisan migrate
 ```
 
 The seeds:
+
 ```
 php artisan db:seed SeedApiKeysTable
 php artisan db:seed SeedEmployeePositionsTable
@@ -112,11 +119,13 @@ php artisan db:seed SeedEmployeesTable
 ## _Troubleshoot_
 
 * If you have a 500 error, in the laradock/ folder:
+
 ```
 docker-compose logs nginx
 ```
 
 * For when Docker fails to run LLB:
+
 ```
 export DOCKER_BUILDKIT=0
 export COMPOSE_DOCKER_CLI_BUILD=0
@@ -132,7 +141,9 @@ _Original assignment text from here below_
 # Assignment
 
 ## Description
-A small PHP assignment meant to cover a wide area of skills. It's meant as a Best-Effort assignment as we will care more about your journey, rather than the end results.
+
+A small PHP assignment meant to cover a wide area of skills. It's meant as a Best-Effort assignment as we will care more
+about your journey, rather than the end results.
 
 ## Requirements
 
@@ -162,6 +173,7 @@ Given the `employee` model, containing:
 ## Evaluation
 
 We look for:
+
 1. The way you structure your test code and how you write it
 2. Your train of thought
 3. Your decision-making

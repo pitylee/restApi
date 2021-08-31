@@ -54,7 +54,6 @@ class EmployeesUpdateEventAction extends BaseAction
             if (!$updates['superior'] = Employees::where('name', $this->request['payload']['superior'])->wherePosition('management')->first()->id ?? false) {
                 throw new RestApiException('Superior "' . $this->request['payload']['superior'] . '" not found!');
             }
-            ;
         }
 
         if ($this->request['payload']['startDate'] ?? false) {
@@ -65,6 +64,6 @@ class EmployeesUpdateEventAction extends BaseAction
             $updates['endDate'] = Carbon::parse($this->request['payload']['endDate'])->format('Y-m-d');
         }
 
-        return $employee->update($updates) ? ['message'=>'Updated.'] : ['message'=>'Update error.'];
+        return $employee->update($updates) ? ['message' => 'Updated.'] : ['message' => 'Update error.'];
     }
 }

@@ -22,7 +22,4 @@ class ApiKeys extends Model
      * @var string
      */
     protected $table = self::TABLE;
-
-
-
 }

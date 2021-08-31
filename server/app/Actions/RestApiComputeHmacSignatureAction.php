@@ -2,7 +2,6 @@
 
 namespace App\Actions;
 
-use App\Actions\BaseAction;
 use App\Models\ApiKeys;
 
 class RestApiComputeHmacSignatureAction extends BaseAction

@@ -14,29 +14,64 @@ abstract class BaseAction
     protected array $data = [];
 
     /**
-     * @return array
+     * @param array $data
+     * @return mixed
      */
-    abstract public function rules(): array;
-
-    /**
-     * @return bool
-     */
-    public function authorize(): bool
+    public static function run(array $data = [])
     {
-        return true;
+        $instance = app(static::class);
+
+        if (!empty($data)) {
+            $instance = $instance->setData($data);
+        }
+
+        return $instance->execute();
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    abstract public function handle();
+    public function getData(): array
+    {
+        return $this->data;
+    }
 
     /**
-     * @param array $errors
+     * @param array $data
+     * @return $this
      */
-    protected function onActionValidationException(array $errors): void
+    public function setData(array $data): self
     {
-        return;
+        $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @return mixed|null
+     */
+    public function __get(string $key)
+    {
+        return $this->data[$key] ?? null;
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     */
+    public function __set(string $key, $value): void
+    {
+        $this->data[$key] = $value;
+    }
+
+    /**
+     * @param array $data
+     * @return $this
+     */
+    public function fill(array $data)
+    {
+        return $this->setData($data);
     }
 
     /**
@@ -61,63 +96,28 @@ abstract class BaseAction
     }
 
     /**
-     * @param array $data
-     * @return $this
+     * @return bool
      */
-    public function setData(array $data): self
+    public function authorize(): bool
     {
-        $this->data = $data;
-
-        return $this;
+        return true;
     }
 
     /**
      * @return array
      */
-    public function getData(): array
-    {
-        return $this->data;
-    }
+    abstract public function rules(): array;
 
     /**
-     * @param string $key
-     * @param mixed $value
+     * @param array $errors
      */
-    public function __set(string $key, $value): void
+    protected function onActionValidationException(array $errors): void
     {
-        $this->data[$key] = $value;
+        return;
     }
 
     /**
-     * @param string $key
-     * @return mixed|null
-     */
-    public function __get(string $key)
-    {
-        return $this->data[$key] ?? null;
-    }
-
-    /**
-     * @param array $data
-     * @return $this
-     */
-    public function fill(array $data)
-    {
-        return $this->setData($data);
-    }
-
-    /**
-     * @param array $data
      * @return mixed
      */
-    public static function run(array $data = [])
-    {
-        $instance = app(static::class);
-
-        if (!empty($data)) {
-            $instance = $instance->setData($data);
-        }
-
-        return $instance->execute();
-    }
+    abstract public function handle();
 }

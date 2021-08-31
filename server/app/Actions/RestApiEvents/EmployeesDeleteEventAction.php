@@ -29,6 +29,6 @@ class EmployeesDeleteEventAction extends BaseAction
             $this->request['payload']['employee_name'] ? ['name', '=', trim($this->request['payload']['employee_name'])] : null,
         ]));
 
-        return $employee->delete() ? ['message'=>'Deleted.'] : ['message'=>'Delete error.'];
+        return $employee->delete() ? ['message' => 'Deleted.'] : ['message' => 'Delete error.'];
     }
 }

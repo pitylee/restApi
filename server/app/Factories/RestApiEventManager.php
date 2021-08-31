@@ -2,13 +2,12 @@
 
 namespace App\Factories;
 
-use App\Exceptions\RestApiException;
+use App\Events\RestApiEvents\EmployeesDeleteEvent;
 use App\Events\RestApiEvents\EmployeesFindChildEvent;
 use App\Events\RestApiEvents\EmployeesFindEvent;
 use App\Events\RestApiEvents\EmployeesSaveEvent;
 use App\Events\RestApiEvents\EmployeesUpdateEvent;
-use App\Events\RestApiEvents\EmployeesDeleteEvent;
-
+use App\Exceptions\RestApiException;
 use Illuminate\Support\Manager;
 
 class RestApiEventManager extends Manager

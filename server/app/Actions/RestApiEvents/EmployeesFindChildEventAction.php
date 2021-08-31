@@ -16,7 +16,7 @@ class EmployeesFindChildEventAction extends BaseAction
         return [
             'request' => ['required', 'array'],
             'request.metadata.api_key' => ['required', 'exists:api_keys,api_key'],
-            'request.payload.parent_id' => ['numeric','exists:employees,id'],
+            'request.payload.parent_id' => ['numeric', 'exists:employees,id'],
             'request.payload.parent_name' => ['string'],
         ];
     }
