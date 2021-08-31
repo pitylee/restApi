@@ -1,3 +1,63 @@
+# Initialize the repository
+
+You can download the repo as a zip, or **clone** on your workspace if you have the proper git setup:
+
+```
+git clone git@github.com:pitylee/restApi.git
+```
+
+And then pull the laradock submodule, in some cases with older version of git this is needed:
+
+```
+git submodule update --init --recursive
+```
+
+# Dependencies
+
+While a stable internet connection is needed, you may have to install **Docker (Desktop)** and **Docker Compose** if you don't have already installed.
+If you still have to install, please follow the official docs to do so [here](https://docs.docker.com/desktop/#download-and-install) and [here](https://docs.docker.com/compose/install/).
+
+# Before we begin
+
+## Give exec permission to laradock
+
+If you are not already in `laradock` directory, first change the current dir where you have the project:
+
+```
+cd /path/to/project/dir/
+```
+
+To give executive permission, run the following command:
+
+```
+chmod +x ./start
+```
+
+You have to copy the .env file from the root, to the laradock submodule's directory:
+```
+cp .env.docker ./laradock/.env
+```
+
+# Usage
+
+## Start docker environment
+
+For short usage on Mac and Linux, you can run via the file which contains the commands:
+
+```
+./start 
+```
+
+This will run the `docker-compose` commands, or you can rule them manually, via running in the terminal of your preference:
+
+```
+docker-compose up -d --build nginx mysql redis php-worker
+
+docker-compose exec --user=laradock workspace bash
+```
+
+
+
 # Assignment
 
 ## Description
