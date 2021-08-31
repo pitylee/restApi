@@ -6,6 +6,12 @@ You can download the repo as a zip, or **clone** on your workspace if you have t
 git clone git@github.com:pitylee/restApi.git
 ```
 
+If you are not already in `laradock` directory, first change the current dir where you have the project:
+
+```
+cd /path/to/project/dir/
+```
+
 And then pull the laradock submodule, in some cases with older version of git this is needed:
 
 ```
@@ -21,24 +27,33 @@ If you still have to install, please follow the official docs to do so [here](ht
 
 ## Give exec permission to laradock
 
-If you are not already in `laradock` directory, first change the current dir where you have the project:
-
-```
-cd /path/to/project/dir/
-```
-
 To give executive permission, run the following command:
 
 ```
 chmod +x ./start
 ```
 
-You have to copy the .env file from the root, to the laradock submodule's directory:
+You have to move the nginx default.conf file from the root, to the laradock submodule's nginx sites directory:
 ```
-cp .env.docker ./laradock/.env
+mv default.conf ./laradock/nginx/sites/default.conf
 ```
 
+You have to move the corresponding .env file from the root, to the laradock submodule's directory:
+```
+mv .env.laradock ./laradock/.env
+```
+
+You have to move the corresponding .env file from the root, to the server directory for Laravel:
+```
+mv .env.laravel ./server/.env
+```
+
+
 # Usage
+
+## If you have already ran ./start or the docker-compose commands
+
+At this point, if you have already ran Laradock, you have to restart your Docker Desktop, and re-build the images, more specifically the nginx one, in order to force load the nginx configuration.
 
 ## Start docker environment
 
@@ -51,6 +66,8 @@ For short usage on Mac and Linux, you can run via the file which contains the co
 This will run the `docker-compose` commands, or you can rule them manually, via running in the terminal of your preference:
 
 ```
+cd ./laradock
+
 docker-compose up -d --build nginx mysql redis php-worker
 
 docker-compose exec --user=laradock workspace bash
