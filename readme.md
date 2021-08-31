@@ -36,22 +36,22 @@ chmod +x ./start
 
 ## Copy conf and env files
 
-You have to move the nginx default.conf file from the root, to the laradock submodule's nginx sites directory:
+You have to copy the nginx default.conf file from the root, to the laradock submodule's nginx sites directory:
 
 ```
-mv default.conf ./laradock/nginx/sites/default.conf
+cp default.conf ./laradock/nginx/sites/default.conf
 ```
 
-You have to move the corresponding .env file from the root, to the laradock submodule's directory:
+You have to copy the corresponding .env file from the root, to the laradock submodule's directory:
 
 ```
-mv .env.laradock ./laradock/.env
+cp .env.laradock ./laradock/.env
 ```
 
-You have to move the corresponding .env file from the root, to the server directory for Laravel:
+You have to copy the corresponding .env file from the root, to the server directory for Laravel:
 
 ```
-mv .env.laravel ./server/.env
+cp .env.laravel ./server/.env
 ```
 
 # Usage
@@ -84,6 +84,12 @@ docker-compose exec --user=laradock workspace bash
 
 When you see the that the Docker containers are up and running, and entered the workspace with one of the two solutions
 from above, you want to do a few small things:
+
+## First you want to navigate to `/var/www/server`:
+
+```
+cd server/
+```
 
 ## Install composer packages for Laravel
 
