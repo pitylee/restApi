@@ -131,9 +131,14 @@ php artisan test
 
 ## _Handy_
 
-It can come in handy, that we have logs about the incoming requests + the generated MAC can be seen there as well.
+* It can come in handy, that we have logs about the incoming requests + the generated MAC can be seen there as well.
 GUI for this:
 [http://localhost/log-viewer/](http://localhost/log-viewer/)
+
+* The Postman collection can be found in the root of the repo:
+[restApi.postman_collection.json](restApi.postman_collection.json)
+<br/>
+It can be imported, and used, MAC may need to be copied from above, and some data altered accordingly.
 
 ## _Troubleshoot_
 
