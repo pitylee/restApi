@@ -110,6 +110,12 @@ php artisan migrate
 docker-compose logs nginx
 ```
 
+* For when Docker fails to run LLB:
+```
+export DOCKER_BUILDKIT=0
+export COMPOSE_DOCKER_CLI_BUILD=0
+```
+
 <br /><br /><br /><br /><br /><br /><br />
 
 ---
