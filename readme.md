@@ -102,6 +102,14 @@ The migration:
 php artisan migrate
 ```
 
+
+## _Troubleshoot_
+
+* If you have a 500 error, in the laradock/ folder:
+```
+docker-compose logs nginx
+```
+
 <br /><br /><br /><br /><br /><br /><br />
 
 ---
