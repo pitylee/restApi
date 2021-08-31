@@ -33,6 +33,8 @@ To give executive permission, run the following command:
 chmod +x ./start
 ```
 
+## Copy conf and env files
+
 You have to move the nginx default.conf file from the root, to the laradock submodule's nginx sites directory:
 ```
 mv default.conf ./laradock/nginx/sites/default.conf
@@ -73,7 +75,39 @@ docker-compose up -d --build nginx mysql redis php-worker
 docker-compose exec --user=laradock workspace bash
 ```
 
+# In the Laradock environment
 
+When you see the that the Docker containers are up and running, and entered the workspace with one of the two solutions from above, you want to do a few small things:
+
+
+## Install composer packages for Laravel
+
+```
+composer install 
+```
+
+## Generate a secure key for Laravel
+
+```
+php artisan key:generate
+```
+
+## Mysql password check and migration
+
+By default, the username and password for Laradock Mysql will be root:root.
+_This is included in the .env, but you may want to double check with DBeaver, your Database editor of your <3's choice._
+
+The migration:
+```
+php artisan migrate
+```
+
+<br /><br /><br /><br /><br /><br /><br />
+
+---
+_Original assignment text from here below_
+
+---
 
 # Assignment
 
