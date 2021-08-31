@@ -116,6 +116,13 @@ php artisan db:seed SeedEmployeePositionsTable
 php artisan db:seed SeedEmployeesTable
 ```
 
+
+The tests:
+
+```
+php artisan test
+```
+
 ## _Handy_
 
 It can come in handy, that we have logs about the incoming requests + the generated MAC can be seen there as well.

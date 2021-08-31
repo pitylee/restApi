@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Exceptions\EmployeeException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -44,10 +45,13 @@ class Employees extends Model
      */
     public function scopeWherePosition(Builder $query, string $needle)
     {
-        return $query->where(
-            'position',
-            EmployeePositions::wherePosition($needle)->first()->id
-        );
+        $positionId = EmployeePositions::wherePosition($needle)->first()->id ?? null;
+
+        if (!$positionId){
+            throw new EmployeeException('Position can not be found for the given ID!');
+        }
+
+        return $query->where('position', $positionId);
     }
 
     /**
@@ -60,7 +64,12 @@ class Employees extends Model
             $manager['id'] ? ['id', '=', intval($manager['id'])] : null,
             $manager['name'] ? ['name', '=', trim($manager['name'])] : null,
         ]))->wherePosition('management');
+        $managerId = $manager->first()->id ?? null;
 
-        return $query->where('superior', $manager->first()->id);
+        if (!$managerId){
+            throw new EmployeeException('Manager can not be found for the given ID/Name!');
+        }
+
+        return $query->where('superior', $managerId);
     }
 }
